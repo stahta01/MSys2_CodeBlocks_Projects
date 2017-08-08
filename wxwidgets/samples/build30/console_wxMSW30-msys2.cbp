@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="console" />
+		<Option execution_dir="." />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="MSys2 wxMultiDLL">
+				<Option output="bin/$(APP_NAME)/$(BUILD_DIR)/$(APP_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".objs/$(BUILD_DIR)" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="--help" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-DWXUSINGDLL" />
+					<Add directory="$(TARGET_COMPILER_DIR)lib/wx/include/$(WX_TOOLKIT)-$(WX_BUILD)$(WX_VERSION)" />
+				</Compiler>
+				<Linker>
+					<Add library="wx_base$(WX_SUFFIX)-$(WX_VERSION).dll" />
+				</Linker>
+				<Environment>
+					<Variable name="BUILD_DIR" value="msys2_wxMSW_dll" />
+					<Variable name="WX_BUILD" value="unicode-" />
+					<Variable name="WX_SUFFIX" value="u" />
+				</Environment>
+			</Target>
+			<Target title="MSys2 wxMultilib">
+				<Option output="bin/$(APP_NAME)/$(BUILD_DIR)/$(APP_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".objs/$(BUILD_DIR)" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="--help" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add directory="$(TARGET_COMPILER_DIR)lib/wx/include/$(WX_TOOLKIT)-$(WX_BUILD)$(WX_VERSION)" />
+				</Compiler>
+				<Linker>
+					<Add option="-luser32" />
+					<Add option="-lgdi32" />
+					<Add option="-lcomdlg32" />
+					<Add option="-lwinspool" />
+					<Add option="-lwinmm" />
+					<Add option="-lshell32" />
+					<Add option="-lcomctl32" />
+					<Add option="-lole32" />
+					<Add option="-loleaut32" />
+					<Add option="-luuid" />
+					<Add option="-lrpcrt4" />
+					<Add option="-ladvapi32" />
+					<Add option="-lwsock32" />
+					<Add option="-lwininet" />
+					<Add library="$(TARGET_COMPILER_DIR)lib/libwx_baseu-3.0.a" />
+					<Add library="kernel32" />
+					<Add library="uuid" />
+					<Add library="ole32" />
+				</Linker>
+				<Environment>
+					<Variable name="BUILD_DIR" value="msys2_wxMSW" />
+					<Variable name="WX_BUILD" value="unicode-static-" />
+					<Variable name="WX_SUFFIX" value="u" />
+				</Environment>
+			</Target>
+			<Environment>
+				<Variable name="APP_NAME" value="console" />
+				<Variable name="WX_TOOLKIT" value="msw" />
+				<Variable name="WX_VERSION" value="3.0" />
+			</Environment>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="MSys2 wxMultiDLL;MSys2 wxMultilib;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-DwxOVERRIDE=override" />
+			<Add option="-DwxUSE_GUI=0" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/wx-$(WX_VERSION)" />
+		</Compiler>
+		<ResourceCompiler>
+			<Add directory="$(TARGET_COMPILER_DIR)include/wx-$(WX_VERSION)" />
+		</ResourceCompiler>
+		<Unit filename="console.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
