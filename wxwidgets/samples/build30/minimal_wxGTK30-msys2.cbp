@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="minimal" />
+		<Option title="minimal wxGTK3.0" />
 		<Option execution_dir="." />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
@@ -16,29 +16,58 @@
 				<Compiler>
 					<Add option="-D__WXGTK__" />
 					<Add option="-DwxOVERRIDE=override" />
-					<Add directory="$(TARGET_COMPILER_DIR)lib/wx/include/$(WX_TOOLKIT)-unicode-$(WX_VERSION)" />
-					<Add directory="$(TARGET_COMPILER_DIR)include/wx-$(WX_VERSION)" />
+					<Add directory="$(TARGET_COMPILER_DIR)lib/wx/include/$(WX_TOOLKIT)-$(WX_BUILD)$(WX_VERSION)" />
 				</Compiler>
-				<ResourceCompiler>
-					<Add directory="$(TARGET_COMPILER_DIR)include/wx-$(WX_VERSION)" />
-				</ResourceCompiler>
 				<Linker>
 					<Add library="wx_$(WX_TOOLKIT)$(WX_SUFFIX)_core-$(WX_VERSION).dll" />
 					<Add library="wx_base$(WX_SUFFIX)-$(WX_VERSION).dll" />
 				</Linker>
 				<Environment>
-					<Variable name="APP_NAME" value="minimal" />
+					<Variable name="WX_BUILD" value="unicode-" />
 					<Variable name="WX_SUFFIX" value="u" />
 					<Variable name="WX_TOOLKIT" value="gtk2" />
-					<Variable name="WX_VERSION" value="3.0" />
 				</Environment>
 			</Target>
+			<Target title="wx3.0GTK2_LIB">
+				<Option output="bin/$(APP_NAME)/$(TARGET_NAME)/$(APP_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".objs/$(TARGET_NAME)" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-D__WXGTK__" />
+					<Add option="-DwxOVERRIDE=override" />
+					<Add directory="$(TARGET_COMPILER_DIR)lib/wx/include/$(WX_TOOLKIT)-$(WX_BUILD)$(WX_VERSION)" />
+				</Compiler>
+				<Linker>
+					<Add library="libwx_$(WX_TOOLKIT)$(WX_SUFFIX)_core-$(WX_VERSION).a" />
+					<Add library="libwx_base$(WX_SUFFIX)-$(WX_VERSION).a" />
+				</Linker>
+				<Environment>
+					<Variable name="WX_BUILD" value="unicode-static-" />
+					<Variable name="WX_SUFFIX" value="u" />
+					<Variable name="WX_TOOLKIT" value="gtk2" />
+				</Environment>
+			</Target>
+			<Environment>
+				<Variable name="APP_NAME" value="minimal" />
+				<Variable name="WX_VERSION" value="3.0" />
+			</Environment>
 		</Build>
-		<Unit filename="minimal/minimal.cpp" />
-		<Unit filename="sample.ico" />
-		<Unit filename="sample.rc">
+		<VirtualTargets>
+			<Add alias="All" targets="wx3.0GTK2_DLL;wx3.0GTK2_LIB;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add directory="$(TARGET_COMPILER_DIR)include/wx-$(WX_VERSION)" />
+		</Compiler>
+		<ResourceCompiler>
+			<Add directory="$(TARGET_COMPILER_DIR)include/wx-$(WX_VERSION)" />
+		</ResourceCompiler>
+		<Unit filename="../sample.ico" />
+		<Unit filename="../sample.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="minimal.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
