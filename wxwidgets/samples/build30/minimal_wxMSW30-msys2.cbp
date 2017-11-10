@@ -2,14 +2,14 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="minimal" />
+		<Option title="minimal wxMSW3.0" />
 		<Option execution_dir="." />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="MSys2 wxMultiDLL">
-				<Option output="bin/$(APP_NAME)/msys2_wxMSW_dll/$(APP_NAME)" prefix_auto="1" extension_auto="1" />
-				<Option object_output=".objs/msys2_wxMSW_dll" />
+			<Target title="wx3.0_DLL">
+				<Option output="bin/msys2_wxMSW$(WX_VERSION)_dll/$(APP_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".objs/msys2_wxMSW$(WX_VERSION)_dll" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
@@ -27,9 +27,9 @@
 					<Variable name="WX_BUILD" value="unicode-" />
 				</Environment>
 			</Target>
-			<Target title="MSys2 wxMultilib">
-				<Option output="bin/$(APP_NAME)/msys2_wxMSW/$(APP_NAME)" prefix_auto="1" extension_auto="1" />
-				<Option object_output=".objs/msys2_wxMSW" />
+			<Target title="wx3.0_LIB">
+				<Option output="bin/msys2_wxMSW$(WX_VERSION)/$(APP_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".objs/msys2_wxMSW$(WX_VERSION)" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
@@ -63,7 +63,7 @@
 			</Environment>
 		</Build>
 		<VirtualTargets>
-			<Add alias="All" targets="MSys2 wxMultiDLL;MSys2 wxMultilib;" />
+			<Add alias="All" targets="wx3.0_DLL;wx3.0_LIB;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="-DwxOVERRIDE=override" />
