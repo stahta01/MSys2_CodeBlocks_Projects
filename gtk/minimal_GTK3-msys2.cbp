@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="minimal GTK3" />
+		<Option execution_dir="." />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/gtk3_msys2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/gtk3_msys2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Environment>
+				<Variable name="ATK_VERSION" value="1.0" />
+				<Variable name="GLIB_VERSION" value="2.0" />
+				<Variable name="GTK_PIXBUF_VERSION" value="2.0" />
+				<Variable name="GTK_VERSION" value="3.0" />
+				<Variable name="PANGO_VERSION" value="1.0" />
+			</Environment>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="Debug;Release;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/gtk-$(GTK_VERSION)" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/glib-$(GLIB_VERSION)" />
+			<Add directory="$(TARGET_COMPILER_DIR)lib/glib-$(GLIB_VERSION)/include" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/pango-$(PANGO_VERSION)" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/cairo" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/gdk-pixbuf-$(GTK_PIXBUF_VERSION)" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/atk-$(ATK_VERSION)" />
+		</Compiler>
+		<Linker>
+			<Add library="gtk-3" />
+			<Add library="gobject-2.0" />
+			<Add library="glib-2.0" />
+		</Linker>
+		<Extensions>
+			<code_completion />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
