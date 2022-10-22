@@ -48,6 +48,7 @@
 			<Add directory="$(TARGET_COMPILER_DIR)include/cairo" />
 			<Add directory="$(TARGET_COMPILER_DIR)include/gdk-pixbuf-$(GTK_PIXBUF_VERSION)" />
 			<Add directory="$(TARGET_COMPILER_DIR)include/atk-$(ATK_VERSION)" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/harfbuzz" />
 		</Compiler>
 		<Linker>
 			<Add library="gtk-3" />
